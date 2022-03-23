@@ -11,7 +11,6 @@ function displayFlashMessage($name) {
     return false;
 }
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,17 +48,14 @@ function displayFlashMessage($name) {
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
-                                  <?php if (isset($_SESSION['text']) && !empty($_SESSION['text'])) { ?>
+                                  <?php if (isset($_SESSION['counter']) && !empty($_SESSION['counter'])) { ?>
                                     <div class="alert alert-info fade show" role="alert">
-                                        <?php displayFlashMessage('text')?>
+                                        Кнопка была нажата: <b><?php displayFlashMessage('counter')?></b> раз
                                     </div>
                                   <?php } ?>
-                                    <form action="task_12_handler.php" method="post">
-                                        <div class="form-group">
-                                        	<label class="form-label" for="simpleinput">Text</label>
-                                            <input type="text" id="simpleinput" class="form-control" name="text">
-                                        </div>
-                                        <button class="btn btn-success mt-3">Submit</button>
+                                    <form action="task_13_handler.php" method="post">
+                                      <input type="hidden" name="counter" value="1">
+                                      <button class="btn btn-success mt-3">Submit</button>
                                     </form>
                                 </div>
                             </div>

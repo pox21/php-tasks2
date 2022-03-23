@@ -42,12 +42,12 @@ include "helpers/functions.php";
             <div class="form-group">
               <?php if (isset($_SESSION['errorRegister']) && !empty($_SESSION['errorRegister'])) { ?>
               <div class="alert alert-danger fade show" role="alert">
-                <?=displayFlashMessage('errorRegister')?>
+                <?php displayFlashMessage('errorRegister')?>
               </div>
               <?php } ?>
               <?php if (isset($_SESSION['successRegister']) && !empty($_SESSION['successRegister'])) { ?>
                 <div class="alert alert-success fade show" role="alert">
-                  <?=displayFlashMessage('successRegister')?>
+                  <?php displayFlashMessage('successRegister')?>
                 </div>
               <?php } ?>
               <form action="task_11_handler.php" method="post">
