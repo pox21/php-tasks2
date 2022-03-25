@@ -87,3 +87,25 @@ function registerUser($authData) {
     setFlashMessage("successRegister", "Пользователь " . $authData['email'] . " успешно зарегистрирован");
     return "Пользователь успешно добавлен";
 }
+
+function login($authData) {
+
+    if (empty($authData) || !isset($authData['login']) || empty(trim($authData['login'])) || !isset($authData['pass']) || empty(trim($authData['pass']))) {
+        setFlashMessage("errorLogin", "заполните все поля");
+        return false;
+    }
+
+    $user = getUserInfo($authData['login']);
+
+    if (empty($user) || !password_verify($authData['pass'], $user['password'])) {
+        setFlashMessage("errorLogin", "Не верный логин или пароль");
+        return false;
+    }
+
+    $_SESSION['login'] = $user['email'];
+    return true;
+}
+
+function logged_in() {
+    return isset($_SESSION['login']) && !empty($_SESSION['login']);
+}
