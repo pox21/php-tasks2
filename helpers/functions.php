@@ -109,3 +109,25 @@ function login($authData) {
 function logged_in() {
     return isset($_SESSION['login']) && !empty($_SESSION['login']);
 }
+
+function uploadImg($imagePath) {
+    $params = [
+        'image' => $imagePath,
+    ];
+    $sql = "INSERT INTO `images` (`image`) VALUES (:image);";
+    return dbQuery($sql, $params, true);
+}
+
+function getImages() {
+    $sql = "SELECT * FROM `images`";
+    return dbQuery($sql)->fetchAll();
+}
+
+function removeImages($imageId) {
+    $params = [
+        'id' => $imageId,
+    ];
+    $sql = "DELETE FROM `images` WHERE `images` . `id` = :id";
+    dbQuery($sql, $params, true);
+    return true;
+}
